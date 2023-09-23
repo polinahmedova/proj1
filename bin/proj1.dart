@@ -1,5 +1,11 @@
-import 'package:proj1/proj1.dart' as proj1;
+import 'package:dio/dio.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${proj1.calculate()}!');
+import 'models/product/product.dart';
+import 'models/resp/resp.dart'
+
+void main(List<String> arguments) async{
+var clienthttp=Dio();
+var responce = await clienthttp.get('https://dummyjson.com/products');
+var respData = resp.fromJson(responce.data);
+print(respData.products);
 }
